@@ -78,6 +78,9 @@ function getVersion() {
 	if hasChanges ; then
 		result="$result-dirty"
 	fi
+	
+	result="$(tr [A-Z] [a-z] <<< "$result")"
+	
 	echo $result
 }
 
