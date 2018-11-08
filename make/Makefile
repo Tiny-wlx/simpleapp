@@ -22,6 +22,10 @@ RELEASE_SUPPORT := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))/.mak
 IMAGE=$(REGISTRY_HOST)/$(NAME)
 
 VERSION=$(shell . $(RELEASE_SUPPORT) ; getVersion)
+
+@VERSION="$(tr [A-Z] [a-z] <<< "$(VERSION)")"
+@echo $(VERSION)
+
 TAG=$(shell . $(RELEASE_SUPPORT); getTag)
 
 SHELL=/bin/bash
