@@ -23,7 +23,9 @@ IMAGE=$(REGISTRY_HOST)/$(NAME)
 
 VERSION=$(shell . $(RELEASE_SUPPORT) ; getVersion)
 
-TAG=$(shell . $(RELEASE_SUPPORT); getTag)
+GET_TAG=$(shell . $(RELEASE_SUPPORT); getTag)
+
+TAG=$(tr [A-Z] [a-z] <<< "$GET_TAG")
 
 SHELL=/bin/bash
 
