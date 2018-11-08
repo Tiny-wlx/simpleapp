@@ -15,7 +15,9 @@
 #
 REGISTRY_HOST=docker.io
 USERNAME=$(USER)
-NAME=$(shell basename $(CURDIR))
+GET_NAME=$(shell basename $(CURDIR))
+
+TAG=$(tr [A-Z] [a-z] <<< "$GET_NAME")
 
 RELEASE_SUPPORT := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))/.make-release-support
 # IMAGE=$(REGISTRY_HOST)/$(USERNAME)/$(NAME)
@@ -23,9 +25,7 @@ IMAGE=$(REGISTRY_HOST)/$(NAME)
 
 VERSION=$(shell . $(RELEASE_SUPPORT) ; getVersion)
 
-GET_TAG=$(shell . $(RELEASE_SUPPORT); getTag)
-
-TAG=$(tr [A-Z] [a-z] <<< "$GET_TAG")
+TAG=$(shell . $(RELEASE_SUPPORT); getTag)
 
 SHELL=/bin/bash
 
