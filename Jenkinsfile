@@ -4,9 +4,7 @@ pipeline {
     stage('error') {
       steps {
         echo 'test'
-        sh '''pwd
-ls
-make patch-release'''
+        sh 'make patch-release'
       }
     }
   }
