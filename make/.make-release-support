@@ -79,7 +79,7 @@ function getVersion() {
 		result="$result-dirty"
 	fi
 	
-	result="$(tr [A-Z] [a-z] <<< "$result")"
+	result="$(tr [A-Z] [a-z] <<< \"$result\")"
 	
 	echo $result
 }
