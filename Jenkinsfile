@@ -1,10 +1,17 @@
 pipeline {
   agent none
   stages {
-    stage('') {
+    stage('error') {
       steps {
-        sh 'make'
+        sh '''node {
+  stage \'Checkout\'
+  git \'git@github.com:Tiny-wlx/simpleapp.git\'
+ 
+  stage \'Docker build\'
+  docker.build(\'demo\')
+
+}'''
+        }
       }
     }
   }
-}
