@@ -6,7 +6,7 @@ pipeline {
         echo 'test'
         sh '''pwd
 ls
-make'''
+make release'''
       }
     }
   }
