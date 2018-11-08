@@ -1,14 +1,9 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'Dockerfile'
-    }
-
-  }
+  agent any
   stages {
     stage('') {
       steps {
-        echo 'test'
+        sh 'make'
       }
     }
   }
