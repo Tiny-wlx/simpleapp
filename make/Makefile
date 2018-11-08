@@ -15,9 +15,9 @@
 #
 REGISTRY_HOST=docker.io
 USERNAME=$(USER)
-GET_NAME=$(shell basename $(CURDIR))
+# NAME=$(shell basename $(CURDIR))
 
-NAME=`echo $(GET_NAME) | tr A-Z a-z`
+NAME=
 
 RELEASE_SUPPORT := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))/.make-release-support
 # IMAGE=$(REGISTRY_HOST)/$(USERNAME)/$(NAME)
