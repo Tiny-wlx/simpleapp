@@ -23,7 +23,7 @@ IMAGE=$(REGISTRY_HOST)/$(NAME)
 
 VERSION=$(shell . $(RELEASE_SUPPORT) ; getVersion)
 
-@VERSION="$(tr [A-Z] [a-z] <<< "$(VERSION)")"
+VERSION="$(tr [A-Z] [a-z] <<< "$(VERSION)")"
 @echo $(VERSION)
 
 TAG=$(shell . $(RELEASE_SUPPORT); getTag)
