@@ -15,16 +15,13 @@
 #
 REGISTRY_HOST=docker.io
 USERNAME=$(USER)
-# NAME=$(shell basename $(CURDIR))
-
-NAME="dev"
+NAME=$(shell basename $(CURDIR))
 
 RELEASE_SUPPORT := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))/.make-release-support
 # IMAGE=$(REGISTRY_HOST)/$(USERNAME)/$(NAME)
 IMAGE=$(REGISTRY_HOST)/$(NAME)
 
 VERSION=$(shell . $(RELEASE_SUPPORT) ; getVersion)
-
 TAG=$(shell . $(RELEASE_SUPPORT); getTag)
 
 SHELL=/bin/bash
@@ -110,6 +107,7 @@ tag: check-status
 	git commit -m "bumped to version $(VERSION)" ;
 	git tag $(TAG) ;
 	@ if [ -n "$(shell git remote -v)" ] ; then git push --tags ; else echo 'no remote to push tags to' ; fi
+	git push
 
 check-status:
 	@. $(RELEASE_SUPPORT) ; ! hasChanges || (echo "ERROR: there are still outstanding changes" >&2 && exit 1) ;
