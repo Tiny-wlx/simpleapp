@@ -4,7 +4,9 @@ pipeline {
     stage('error') {
       steps {
         echo 'test'
-        sh 'make'
+        sh '''pwd
+ls
+make'''
       }
     }
   }
