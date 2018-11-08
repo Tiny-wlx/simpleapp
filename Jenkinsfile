@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('script') {
       steps {
-        sh 'make patch-release'
+        sh '''pwd
+make patch-release'''
       }
     }
   }
