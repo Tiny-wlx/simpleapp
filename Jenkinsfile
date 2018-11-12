@@ -1,12 +1,15 @@
 pipeline {
-  agent any
+  agent {
+    dockerfile {
+      filename 'Docker'
+    }
+
+  }
   stages {
-    stage('script') {
+    stage('') {
       steps {
-        sh '''whoami
-docker build -t 268672101284.dkr.ecr.us-west-2.amazonaws.com/simpleapp .
-`aws ecr get-login --no-include-email --region us-west-2`
-docker push 268672101284.dkr.ecr.us-west-2.amazonaws.com/simpleapp'''
+        sh '''docker login https://hub.docker.com/
+docker push tinydocker/test'''
       }
     }
   }
